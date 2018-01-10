@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         channelLove.setDescription("最重要的人");
         channelLove.enableLights(true);
         channelLove.enableVibration(true);
+
         nm.createNotificationChannel(channelLove);
     }
 
@@ -63,7 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setContentTitle("測試");
         builder.setContentText("這是內容");
-        builder.setSmallIcon(R.mipmap.ic_launcher);
+        if (Build.VERSION.SDK_INT >= 26)
+        {
+            builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        }
+        else
+        {
+            builder.setSmallIcon(R.mipmap.ic_launcher);
+        }
+
+
         builder.setAutoCancel(true);
         builder.setContentIntent(pi);
 
